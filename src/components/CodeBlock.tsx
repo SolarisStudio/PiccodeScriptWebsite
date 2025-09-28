@@ -20,8 +20,8 @@ const CodeBlock = ({ code, title }: CodeBlockProps) => {
       return {
         name: 'PicCode',
         keywords: {
-          keyword: 'if else import when is module',
-          built_in: 'std',
+          keyword: 'catch if else import when is module let in use return',
+          built_in: 'await',
           literal: 'true false'
         },
         contains: [
