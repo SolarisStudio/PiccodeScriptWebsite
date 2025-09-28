@@ -35,18 +35,19 @@ const Download = () => {
   };
 
   const exampleCode = `
-import std.io
-import std.array
+IO  :: import std.io
+Fs :: import std.fs
+Error :: import std.errors
 
-fibonacci :: (n=1) = 
-  if n <= 1 { n } 
-  else { fibonacci(n-1) + fibonacci(n-2) }
+getContents :: ({fileName: path}) = 
+ let 
+   file := Fs::readToString(path)
+   result := file catch return Error::error("Failed to read file: {err}")
+ in Error::success(result)
 
-numbers := Array.fromRange(1, 10)
-results := numbers |> map(fibonacci)
-
-IO::println("Fibonacci sequence:")
-results |> forEach(IO::println)`;
+result := getContents({fileName: "main.pics"}) catch err
+IO::println(result)
+`;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
@@ -199,10 +200,10 @@ results |> forEach(IO::println)`;
             <p className="text-gray-600 dark:text-gray-300 mb-6">
               Once installed, create your first PiccodeScript script and run it:
             </p>
-            <CodeBlock code={exampleCode} title="fibonacci.pic" />
+            <CodeBlock code={exampleCode} title="example.pic" />
             <div className="mt-6 bg-gray-900 rounded-lg p-4">
               <code className="text-green-400 font-mono text-sm">
-                $ picoc run fibonacci.pic
+                $ picoc run example.pic
               </code>
             </div>
           </Card>
