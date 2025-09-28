@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for piccodescript on 2025-06-15T15:05:19Z
+# fly.toml app configuration file generated for piccodescript on 2025-09-28T09:14:20Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -9,7 +9,7 @@ primary_region = 'jnb'
 [build]
 
 [http_service]
-  internal_port = 80
+  internal_port = 8080
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
